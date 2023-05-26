@@ -7,13 +7,15 @@
 <h2>Edit Machine</h2>
 <hr><br>
 
+<h4>Edit this machine: @Html.DisplayFor(model => model.MachineName)</h4>
+
 <p>@Html.ValidationMessageFor(model => model.MachineName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.MachineId)
-  
+
   @Html.LabelFor(model => model.MachineName, "Machine Name: ")
   @Html.TextBoxFor(model => model.MachineName)
 

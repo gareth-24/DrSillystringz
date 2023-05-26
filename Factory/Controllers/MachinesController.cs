@@ -62,9 +62,16 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Edit(Machine machine)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(machine);
+      }
+      else
+      {
       _db.Machines.Update(machine);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Delete(int id)
@@ -101,6 +108,15 @@ namespace Factory.Controllers
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = machine.MachineId });
+    }
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      EngineerMachine joinEntry = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachines.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
