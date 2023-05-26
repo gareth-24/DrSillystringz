@@ -7,8 +7,21 @@ using System.Linq;
 
 namespace Factory.Controllers
 {
-  public class MachinesContoller : Controller
+  public class MachinesController : Controller
   {
-    
+    private readonly FactoryContext _db;
+
+    public MachinesController(FactoryContext db)
+    {
+      _db = db;
+    }
+
+    public ActionResult Index()
+    {
+      List<Machine> model = _db.Machines
+                                .OrderBy(machine => machine.MachineName)
+                                .ToList();
+      return View(model);
+    }
   }
 }
