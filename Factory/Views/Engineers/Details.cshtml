@@ -8,30 +8,29 @@
 <h2>Engineer Details</h2>
 <hr><br>
 
-<h4>@Html.Label("Engineer Name"): @Html.DisplayFor(model => model.EngineerName)</h4>
-
+<h4>@Html.Label("Engineer Name"): <em>@Html.DisplayFor(model => model.EngineerName)</em></h4>
+<br>
 @if(@Model.JoinEntities.Count == 0)
 {
   <p>There are currently no machines listed that this engineer is licensed to repair!</p>
 }
 else
 {
-  <h4>Licensed to repair/operate:</h4>
+  <h6>Licensed to repair/operate the following machines:</h6>
   <ul>
     @foreach (EngineerMachine join in Model.JoinEntities)
     {
-      <li>Machine: @join.Machine.MachineName</li>
+      <li>@join.Machine.MachineName</li>
       @using (Html.BeginForm("DeleteJoin", "Engineers"))
       {
         @Html.Hidden("joinId", @join.EngineerMachineId)
-        <input type="submit" value="Delete"/>
+        <input type="submit" value="Remove Machine" class="btn btn-warning"/>
       }
     }
   </ul>
 }
-<br>
+<hr><br>
 <p>@Html.ActionLink("Add a machine", "AddMachine", new { id = Model.EngineerId })</p>
-<br>
 <p>@Html.ActionLink("Edit engineer", "Edit", new { id = Model.EngineerId })</p>
 <p>@Html.ActionLink("Delete engineer", "Delete", new { id = Model.EngineerId })</p>
 <p>@Html.ActionLink("Back to engineers list", "Index")</p>

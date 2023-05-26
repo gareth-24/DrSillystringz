@@ -4,14 +4,15 @@
 
 @model Factory.Models.Engineer;
 
-<h2>Are you sure you want to delete this engineer?</h2>
+<h2>Delete engineer</h2>
 <hr><br>
 
-<p>@Html.DisplayFor(model => model.EngineerName)</p>
+<h4>Are you sure you want to delete this engineer?</h4><br>
+<h4>@Html.DisplayFor(model => model.EngineerName)</h4>
 
 @using (Html.BeginForm())
 {
   <input type="submit" value="Delete" class="btn btn-warning" />
 }
-
+<hr><br>
 <p>@Html.ActionLink("Back to engineers", "Index")</p>
