@@ -7,29 +7,36 @@
 <h1>Welcome to the Dr. Sillystringz' Factory!</h1>
 <hr><br>
 
-<h4>Engineers</h4>
-@if (Model["engineers"].Length == 0)
-{
-  <p>No engineers have been added yet!</p>
-}
-<ul>
-  @foreach (Engineer engineer in Model["engineers"])
-  {
-    @* <li>@Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId})</li> *@
-  }
-</ul>
+<div class="row align-items-start">
+  <div class="col">
+    <h4>Engineers</h4>
+    @if (Model["engineers"].Length == 0)
+    {
+      <p>No engineers have been added yet!</p>
+    }
+    <ul>
+      @foreach (Engineer engineer in Model["engineers"])
+      {
+        <li>@Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId})</li>
+      }
+    </ul>
+  </div>
 
-<h4>Machines</h4>
-@if (Model["machines"].Length == 0)
-{
-  <p>No machines have been added yet!</p>
-}
-<ul>
-  @foreach (Machine machine in Model["machines"])
-  {
-    @* <li>@Html.ActionLink(@machine.MachineId, "Details", "Machines", new { id = @machine.MachineId})</li> *@
-  }
-</ul>
+  <div class="col">
+    <h4>Machines</h4>
+    @if (Model["machines"].Length == 0)
+    {
+      <p>No machines have been added yet!</p>
+    }
+    <ul>
+      @foreach (Machine machine in Model["machines"])
+      {
+        <li>@Html.ActionLink(@machine.MachineName, "Details", "Machines", new { id = @machine.MachineId})</li>
+      }
+    </ul>
+  </div>
+</div>
 
-<p>@Html.ActionLink("Engineers", "Index", "Engineers")</p>
-<p>@Html.ActionLink("Machines", "Index", "Machines")</p>
+<hr><br>
+<p>@Html.ActionLink("View Engineers", "Index", "Engineers")</p>
+<p>@Html.ActionLink("View Machines", "Index", "Machines")</p>
