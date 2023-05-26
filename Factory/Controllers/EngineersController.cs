@@ -88,7 +88,6 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    //new below
 
     public ActionResult AddMachine(int id)
     {
