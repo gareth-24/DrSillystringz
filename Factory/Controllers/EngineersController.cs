@@ -23,5 +23,25 @@ namespace Factory.Controllers
                                 .ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Engineer engineer)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(engineer);
+      }
+      else
+      {
+      _db.Engineers.Add(engineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+      }
+    }
   }
 }
